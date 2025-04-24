@@ -1,6 +1,11 @@
 import { Routes } from '@angular/router';
-import { InicioComponent } from './inicio/inicio/inicio.component';
-import { FormularioComponent } from './contacto/formulario/formulario.component';
+import { InicioComponent } from './paginas/home/inicio/inicio.component';
+import { FormularioComponent } from './paginas/contacto/formulario/formulario.component';
+import { OfertasComponent } from './paginas/ofertas/ofertas/ofertas.component';
+import { ProductosComponent } from './paginas/productos/productos/productos.component';
+
+import { CarritoComponent } from './paginas/carrito/carrito/carrito.component';
+
 
 export const routes: Routes = [
 
@@ -8,5 +13,11 @@ export const routes: Routes = [
 
     {path:'inicio',component:InicioComponent},
 
-    {path:'contacto',component:FormularioComponent}
+    {path:'contacto',component:FormularioComponent},
+
+    {path:'ofertas',component:OfertasComponent},
+
+    {path:'productos',component:ProductosComponent},
+
+    {path:'carrito',component:CarritoComponent}
 ];
