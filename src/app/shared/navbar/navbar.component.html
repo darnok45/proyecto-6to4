@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" routerLink="/productos">Producto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/inicio">Inicio</a>
@@ -21,9 +21,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" routerLink="/ofertas">ofertas</a></li>
-              <li><a class="dropdown-item" routerLink="/productos">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" routerLink="/carrito">Something else here</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -35,7 +33,7 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <li>
-          <a routerLink="/carrito">
+          <a [routerLink]="['/carrito']">
             <i class="bi bi-cart"></i>
             <span *ngIf="cantidadProductos > 0">
               {{cantidadProductos}}

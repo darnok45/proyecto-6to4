@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavbarComponent,FooterComponent,FormsModule,HttpClientModule],
+  imports: [RouterOutlet,NavbarComponent,FooterComponent,FormsModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

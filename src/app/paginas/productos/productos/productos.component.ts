@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Producto } from '../../../modelos/producto.model';
 import { CarritoService } from '../../../servicios/carrito.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule,RouterModule],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })
@@ -15,7 +18,7 @@ export class ProductosComponent {
       nombre :'Hola',
       descripcion:'lo mira feo',
       precio : 2000,
-      imagen: '',
+      imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk0IwIcduouLycHMotyagv80-9y2tIntl-PA&s',
       disponibilidad : true,
     },
   ]
