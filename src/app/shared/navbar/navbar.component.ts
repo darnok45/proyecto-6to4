@@ -11,20 +11,40 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
-  cantidadProductos: number = 0;
+ // Variable que almacena la cantidad total de productos en el carrito
+cantidadProductos: number = 0;
 
-  constructor(private carritoService: CarritoService){}
+// Constructor donde inyectamos el servicio del carrito
+constructor(private carritoService: CarritoService) {}
 
-  ngOnInit(): void {
-    // Escucha los cambios en el carrito para actualizar la cantidad total de productos
+// Método que se ejecuta automáticamente cuando se inicializa el componente
+ngOnInit(): void {
+  // Nos suscribimos al observable del carrito que emite los cambios del contenido del carrito
+  this.carritoService.carrito$.subscribe({
+    
+    // Si la suscripción recibe un nuevo valor (una lista de productos)
+    next: (productos) => {
+      // Se calcula la cantidad total de productos sumando las cantidades individuales
+      // reduce recorre el arreglo acumulando la suma de item.cantidad
+      this.cantidadProductos = productos.reduce((total, item) => total + item.cantidad, 0);
+    },
 
-    this.carritoService.carrito$.subscribe((productos: { producto: Producto,cantidad : number}[]) => {
-      this.cantidadProductos = productos.reduce((total, item) => total + item.cantidad,0) //Suma la cantidad de productos
-    })
-  }
+    // Si ocurre un error durante la suscripción (por ejemplo, falla al obtener los datos)
+    error: (err) => {
+      // Se muestra un mensaje de error en la consola para depurar
+      console.error('Error al obtener el carrito', err);
+      
+      // Se asigna 0 como valor por defecto a cantidadProductos en caso de error
+      this.cantidadProductos = 0;
+    }
+  });
+}
 
-  onCarritoClick(){
-    console.log('Carrito clicked');
-  }
+
+
+// Método que se ejecuta cuando el usuario hace clic en el ícono del carrito
+onCarritoClick() {
+  console.log('Carrito clicked'); // Muestra un mensaje en la consola como respuesta al clic
+}
 
 }

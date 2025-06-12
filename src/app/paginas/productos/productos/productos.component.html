@@ -1,14 +1,30 @@
-<h1>Productos</h1>
-<div class="card-container">
-    <ng-container *ngIf="Productos && Productos.length">
-        <ng-container *ngFor ="let producto of Productos">
-            <div *ngIf ="producto.disponibilidad" class ="card">
-                <img [src]="producto.imagen" alt="{{producto.nombre}}" class="product-image">
-                <h2>{{producto.nombre}}</h2>
-                <p>{{producto.descripcion}}</p>
-                <p>Precio:{{producto.precio}}</p>
-                <button type="button" class="btn btn-outline-primary" (click)="agregar(producto)">Agregar al carrito</button>
-            </div>
-        </ng-container>
+<h1 class="text-center my-4">Productos</h1>
+<div class="card-container justify-content-center">
+  <ng-container *ngIf="Productos && Productos.length">
+    <ng-container *ngFor="let producto of Productos">
+      <div *ngIf="producto.disponibilidad" class="card">
+        <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="product-image">
+        <div class="card-body">
+          <h2 class="card-title">{{ producto.nombre }}</h2>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-price">Precio: {{ producto.precio | currency }}</p>
+
+          <!-- Contenedor para los botones centrados y uno al lado del otro -->
+          <div class="d-flex justify-content-center align-items-center">
+            <!-- Botón Agregar al Carrito -->
+            <button type="button" class="btn btn-outline-primary me-2" (click)="agregar(producto)">
+            <i class="fa-solid fa-cart-plus"></i>
+            </button>
+
+            <!-- Botón Agregar a Favoritos -->
+            <button type="button" class="btn btn-outline-danger" (click)="agregarAFavoritos(producto)">
+             <i class="fa-solid fa-heart"></i> 
+            </button>
+          </div>
+
+
+        </div>
+      </div>
     </ng-container>
+  </ng-container>
 </div>
